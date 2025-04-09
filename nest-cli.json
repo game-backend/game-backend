@@ -1,0 +1,84 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/game-backend/src",
+  "monorepo": true,
+  "root": "apps/game-backend",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/game-backend/tsconfig.app.json"
+  },
+  "projects": {
+    "game-backend": {
+      "type": "application",
+      "root": "apps/game-backend",
+      "entryFile": "main",
+      "sourceRoot": "apps/game-backend/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/game-backend/tsconfig.app.json"
+      }
+    },
+    "players-management": {
+      "type": "application",
+      "root": "apps/players-management",
+      "entryFile": "main",
+      "sourceRoot": "apps/players-management/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/players-management/tsconfig.app.json"
+      }
+    },
+    "game-scores": {
+      "type": "application",
+      "root": "apps/game-scores",
+      "entryFile": "main",
+      "sourceRoot": "apps/game-scores/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/game-scores/tsconfig.app.json"
+      }
+    },
+    "leaderboard": {
+      "type": "application",
+      "root": "apps/leaderboard",
+      "entryFile": "main",
+      "sourceRoot": "apps/leaderboard/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/leaderboard/tsconfig.app.json"
+      }
+    },
+    "log-management": {
+      "type": "application",
+      "root": "apps/log-management",
+      "entryFile": "main",
+      "sourceRoot": "apps/log-management/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/log-management/tsconfig.app.json"
+      }
+    },
+    "auth-service": {
+      "type": "application",
+      "root": "apps/auth-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/auth-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/auth-service/tsconfig.app.json"
+      }
+    },
+    "api-service": {
+      "type": "library",
+      "root": "libs/api-service",
+      "entryFile": "index",
+      "sourceRoot": "libs/api-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/api-service/tsconfig.lib.json"
+      }
+    },
+    "token-bucket-rate-limiter": {
+      "type": "library",
+      "root": "libs/token-bucket-rate-limiter",
+      "entryFile": "index",
+      "sourceRoot": "libs/token-bucket-rate-limiter/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/token-bucket-rate-limiter/tsconfig.lib.json"
+      }
+    }
+  }
+}

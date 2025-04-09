@@ -1,0 +1,70 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/api/game-scores/scores": {
+            "post": {
+                "operationId": "GameScoresController_saveScore",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ScoreDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Player Score has been successfully created."
+                    }
+                },
+                "tags": [
+                    "GameScores"
+                ]
+            }
+        },
+        "/api/game-scores/scores/top": {
+            "get": {
+                "operationId": "GameScoresController_getTopScores",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "GET top scores"
+                    }
+                },
+                "tags": [
+                    "GameScores"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Game Scores API",
+        "description": "API documentation",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [],
+    "components": {
+        "schemas": {
+            "ScoreDto": {
+                "type": "object",
+                "properties": {
+                    "playerId": {
+                        "type": "string"
+                    },
+                    "score": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "playerId",
+                    "score"
+                ]
+            }
+        }
+    }
+}

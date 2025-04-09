@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "a42cfdc4-1b40-4163-9ec1-88f2d06658a8",
+		"name": "game_backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11215125"
+	},
+	"item": [
+		{
+			"name": "players-management",
+			"item": [
+				{
+					"name": "players",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{geri_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"tommy\",\n    \"email\":\"foo@bar.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{players_management_service_url}}/api/players-management/players",
+							"host": [
+								"{{players_management_service_url}}"
+							],
+							"path": [
+								"api",
+								"players-management",
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "players",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{geri_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{players_management_service_url}}/api/players-management/players/67f43aebd5a228bbaa96d316",
+							"host": [
+								"{{players_management_service_url}}"
+							],
+							"path": [
+								"api",
+								"players-management",
+								"players",
+								"67f43aebd5a228bbaa96d316"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "players",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{geri_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"my+email@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{players_management_service_url}}/api/players-management/players/67f4381b728524b62888ba1d",
+							"host": [
+								"{{players_management_service_url}}"
+							],
+							"path": [
+								"api",
+								"players-management",
+								"players",
+								"67f4381b728524b62888ba1d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "players",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code === 401){",
+									"    pm.sendRequest({",
+									"        url: \"https://46.251.254.114:60444/geri_connect/auth/v1/token\",",
+									"        method: 'GET',",
+									"        header: {",
+									"            'Authorization': 'Basic ZmFpcnRpbGl0eTp0YW1icmU='",
+									"        }",
+									"    }, function (err, res){",
+									"        var jsonData = res.json()",
+									"        postman.setGlobalVariable(\"geri_access_token\", jsonData[\"token\"]);",
+									"        postman.setNextRequest(request.name);",
+									"    })",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{geri_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{players_management_service_url}}/api/players-management/players/67f4381b728524b62888ba1d",
+							"host": [
+								"{{players_management_service_url}}"
+							],
+							"path": [
+								"api",
+								"players-management",
+								"players",
+								"67f4381b728524b62888ba1d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "game-scores",
+			"item": [
+				{
+					"name": "scores",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{geri_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"playerId\": \"67f43aebd5a228bbaa96d316\",\n    \"score\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{game_scores_service_url}}/api/game-scores/scores",
+							"host": [
+								"{{game_scores_service_url}}"
+							],
+							"path": [
+								"api",
+								"game-scores",
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "top",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{geri_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"playerId\": \"67f43aebd5a228bbaa96d316\",\n    \"score\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{game_scores_service_url}}/api/game-scores/scores/top",
+							"host": [
+								"{{game_scores_service_url}}"
+							],
+							"path": [
+								"api",
+								"game-scores",
+								"scores",
+								"top"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "leaderboard",
+			"item": [
+				{
+					"name": "scores",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{geri_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{leaderboard_service_url}}/api/leaderboard/players/top?page=1&limit=10",
+							"host": [
+								"{{leaderboard_service_url}}"
+							],
+							"path": [
+								"api",
+								"leaderboard",
+								"players",
+								"top"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "logs-management",
+			"item": [
+				{
+					"name": "scores",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{geri_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"playerId\":\"67f18c62d9a9744b33625234\",\n    \"logData\": \"this is a new log entry\",\n    \"severity\": \"high\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{logs_management_service_url}}/api/logs-management/logs",
+							"host": [
+								"{{logs_management_service_url}}"
+							],
+							"path": [
+								"api",
+								"logs-management",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "game_backend_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "logs_management_service_url",
+			"value": "http://localhost:3004",
+			"type": "string"
+		},
+		{
+			"key": "players_management_service_url",
+			"value": "http://localhost:3001",
+			"type": "string"
+		},
+		{
+			"key": "leaderboard_service_url",
+			"value": "http://localhost:3003",
+			"type": "string"
+		},
+		{
+			"key": "game_scores_service_url",
+			"value": "http://localhost:3002",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,170 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/api/players-management/players": {
+            "post": {
+                "operationId": "PlayersController_createPlayer",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePlayerDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Player has been successfully created."
+                    }
+                },
+                "tags": [
+                    "Players"
+                ]
+            },
+            "get": {
+                "operationId": "PlayersController_getPlayersByIds",
+                "parameters": [
+                    {
+                        "name": "ids",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "GET Players"
+                    }
+                },
+                "tags": [
+                    "Players"
+                ]
+            }
+        },
+        "/api/players-management/players/{id}": {
+            "get": {
+                "operationId": "PlayersController_getPlayerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "GET Players by ids"
+                    }
+                },
+                "tags": [
+                    "Players"
+                ]
+            },
+            "put": {
+                "operationId": "PlayersController_updatePlayerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePlayerDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "PUT Player by Id"
+                    }
+                },
+                "tags": [
+                    "Players"
+                ]
+            },
+            "delete": {
+                "operationId": "PlayersController_deletePlayerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "DELETE Player by Id"
+                    }
+                },
+                "tags": [
+                    "Players"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Players Management API",
+        "description": "API documentation",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [],
+    "components": {
+        "schemas": {
+            "CreatePlayerDto": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "username",
+                    "email"
+                ]
+            },
+            "UpdatePlayerDto": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "username",
+                    "email"
+                ]
+            }
+        }
+    }
+}

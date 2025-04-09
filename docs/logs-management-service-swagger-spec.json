@@ -1,0 +1,60 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/api/logs-management/logs": {
+            "post": {
+                "operationId": "LogManagementController_createLogs",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateLogsDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Log Entry accepted for processing."
+                    }
+                },
+                "tags": [
+                    "LogManagement"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Logs Management API",
+        "description": "API documentation",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [],
+    "components": {
+        "schemas": {
+            "CreateLogsDto": {
+                "type": "object",
+                "properties": {
+                    "playerId": {
+                        "type": "string"
+                    },
+                    "logData": {
+                        "type": "string"
+                    },
+                    "severity": {
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "playerId",
+                    "logData",
+                    "severity"
+                ]
+            }
+        }
+    }
+}
